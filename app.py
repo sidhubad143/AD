@@ -1,4 +1,3 @@
-# promoter_bot_pyrogram.py
 from pyrogram import Client
 from pyrogram.types import ChatPrivileges
 
@@ -11,18 +10,16 @@ TARGET_USER = 7616808278             # user id (int). If using phone, use "+<cc>
 
 app = Client("promoter_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
-# Full admin rights (groups/channels)
+# Full admin rights compatible with channels (removed group-specific like can_manage_chat and can_manage_video_chats)
 PRIVS = ChatPrivileges(
-    can_manage_chat=True,
     can_delete_messages=True,
-    can_manage_video_chats=True,
     can_restrict_members=True,
     can_promote_members=True,
     can_change_info=True,
     can_post_messages=True,    # channels only
     can_edit_messages=True,    # channels only
     can_invite_users=True,
-    can_pin_messages=True,     # groups/supergroups
+    can_pin_messages=True,     # groups/supergroups/channels
     is_anonymous=False
 )
 
