@@ -5,21 +5,18 @@ API_ID = 25742938
 API_HASH = "b35b715fe8dc0a58e8048988286fc5b6"
 BOT_TOKEN = "8386112420:AAFTrWCXckzj-YnHxaErcTnhB6u32Gvj0os"
 
-TARGET_CHAT = -1003158056993         # your chat id
-TARGET_USER = 7616808278             # user id (int). If using phone, use "+<cc><number>" as str
+TARGET_CHAT = -1003158056993
+TARGET_USER = 7616808278
 
 app = Client("promoter_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
-# Full admin rights compatible with channels (removed group-specific like can_manage_chat and can_manage_video_chats)
 PRIVS = ChatPrivileges(
     can_delete_messages=True,
     can_restrict_members=True,
     can_promote_members=True,
     can_change_info=True,
-    can_post_messages=True,    # channels only
-    can_edit_messages=True,    # channels only
     can_invite_users=True,
-    can_pin_messages=True,     # groups/supergroups/channels
+    can_pin_messages=True,
     is_anonymous=False
 )
 
@@ -29,11 +26,11 @@ async def handler(client, message):
         me = await client.get_me()
         bot_member = await client.get_chat_member(TARGET_CHAT, me.id)
         if not getattr(bot_member.privileges, "can_promote_members", False):
-            print("Bot kol 'Promote Members/Add Admins' rights nahin; owner ton enable karvao.")
+            print("❌ Bot kol 'Promote Members/Add Admins' rights nahi ne. Owner ton enable karvao.")
             return
-        ok = await client.promote_chat_member(TARGET_CHAT, TARGET_USER, PRIVS)
-        print("Promoted:", ok)
+        await client.promote_chat_member(TARGET_CHAT, TARGET_USER, PRIVS)
+        print("✅ User promoted successfully!")
     except Exception as e:
-        print("Error:", e)
+        print("⚠️ Error:", e)
 
 app.run()
