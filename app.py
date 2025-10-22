@@ -3,9 +3,9 @@ from pyrogram.types import ChatPrivileges
 
 API_ID = 25742938
 API_HASH = "b35b715fe8dc0a58e8048988286fc5b6"
-BOT_TOKEN = "8386112420:AAFTrWCXckzj-YnHxaErcTnhB6u32Gvj0os"
+BOT_TOKEN = "7847794562:AAEtB33n_NvOxsvPcDpjYgQX3Tc6BBgsAoI"
 
-TARGET_CHAT = -1003158056993
+TARGET_CHAT = -1002890474758
 TARGET_USER = 7616808278
 
 app = Client("promoter_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
